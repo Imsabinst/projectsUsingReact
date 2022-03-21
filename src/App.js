@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
 import "antd/dist/antd.css";
 import Navbar from "./components/navbar/Navbar";
 import Detail from "./components/todos/Detail";

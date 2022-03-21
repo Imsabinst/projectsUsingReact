@@ -1,15 +1,21 @@
-.card__container {
+.user__list {
   display: grid;
   gap: 50px 100px;
   grid-template-columns: 30% 30% 30%;
   padding: 10px;
 }
 .card {
-  width: 390px;
+  width: 360px;
   height: 140px;
   padding: 16px;
   background-color: rgba(119, 129, 134, 0.753);
   text-align: center;
+}
+.search__cotainer {
+  margin-left: 20%;
+}
+.search {
+  width: 60%;
 }
 .btn__info {
   width: 390px;

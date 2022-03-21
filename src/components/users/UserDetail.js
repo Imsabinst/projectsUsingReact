@@ -19,14 +19,8 @@ const UserDetail = () => {
   }, []);
 
   return (
-    <div>
-      {/*   <div className="btn__back">
-        <Link to="/users">
-          <LeftOutlined />
-        </Link>
-      </div> */}
-
-      <div className="detail__container">
+    <div className="detail__container">
+      <div>
         <h1>Details</h1>
 
         <div>ID: {postDetails?.id}</div>
