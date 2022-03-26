@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-[Click me](https://sabinreactproject.netlify.app/)
+[Click me for the demo](https://sabinreactproject.netlify.app/)
 
 ## Available Scripts
 
