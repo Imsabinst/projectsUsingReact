@@ -13,7 +13,7 @@ const UserDetail = () => {
     const user_detail_response = `${baseURL}/users/${id}`;
     const user_details = await axios.get(user_detail_response);
     const user_detail = await user_details.data;
-    console.log(user_detail);
+    console.log("userdeta.......", user_detail);
     setPostDetails(user_detail);
   };
   useEffect(() => {

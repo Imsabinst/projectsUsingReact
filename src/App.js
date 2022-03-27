@@ -9,6 +9,7 @@ import UserDetail from "./components/users/UserDetail";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseURL } from "./components/services/Constants";
+import Loading from "./components/loading/Loading";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -83,26 +84,23 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <Routes>
-        <Route exact path="/" element={<Users users={user} />} />
-        <Route exact path="/users" element={<Users users={user} />} />
-        <Route path="/users/:id" element={<UserDetail loading={isLoading} />} />
-        <Route
-          exact
-          path="/todos"
-          element={<Detail loading={isLoading} info={todo} />}
-        />
-        <Route
-          exact
-          path="/comments"
-          element={<Comments loading={isLoading} comment={comments} />}
-        />
-        <Route
-          exact
-          path="/photos"
-          element={<Photos loading={isLoading} photo={photos} />}
-        />
-      </Routes>
+
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <Routes>
+          <Route exact path="/" element={<Users users={user} />} />
+          <Route exact path="/users" element={<Users users={user} />} />
+          <Route path="/users/:id" element={<UserDetail />} />
+          <Route exact path="/todos" element={<Detail info={todo} />} />
+          <Route
+            exact
+            path="/comments"
+            element={<Comments comment={comments} />}
+          />
+          <Route exact path="/photos" element={<Photos photo={photos} />} />
+        </Routes>
+      )}
     </BrowserRouter>
   );
 }

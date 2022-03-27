@@ -2,6 +2,7 @@ import Loading from "../loading/Loading";
 import Search from "../search/Search";
 
 const Users = ({ users }) => {
+  console.log("...........users...........");
   return (
     <div>
       {users ? (
