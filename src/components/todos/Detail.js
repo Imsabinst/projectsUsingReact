@@ -1,20 +1,8 @@
-import { Space, Spin, Table } from "antd";
-import React, { useEffect, useState } from "react";
+import { Table } from "antd";
+import Loading from "../loading/Loading";
 
-const Detail = () => {
-  const [loading, setLoading] = useState(false);
-  const [info, setInfo] = useState([]);
-
-  useEffect(() => {
-    setLoading(true);
-    fetch("https://jsonplaceholder.typicode.com/todos")
-      .then((response) => response.json())
-      .then((data) => setInfo(data))
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(setLoading(false));
-  }, []);
+const Detail = ({ info }) => {
+  console.log(info);
   const columns = [
     { key: "1", title: "ID", dataIndex: "id" },
     { key: "2", title: "User Id", dataIndex: "userId" },
@@ -31,12 +19,7 @@ const Detail = () => {
 
   return (
     <div>
-      {loading ? (
-        <Space size="middle">
-          <Spin size="large" />
-        </Space>
-      ) : null}
-      <Table dataSource={info} columns={columns} />
+      {info ? <Table dataSource={info} columns={columns} /> : <Loading />}
     </div>
   );
 };

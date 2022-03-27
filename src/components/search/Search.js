@@ -1,6 +1,8 @@
 import { Button, Modal } from "antd";
 import axios from "axios";
 import React, { useState } from "react";
+import Loading from "../loading/Loading";
+import { baseURL } from "../services/Constants";
 import ModelDetail from "../users/ModelDetail";
 import "./search.css";
 
@@ -10,7 +12,7 @@ const Search = ({ searchData, placeholder }) => {
   const [activeModalId, setActiveModalId] = useState("");
   const [search, setSearch] = useState("");
 
-  console.log(searchData, "........--------.......");
+  console.log(searchData, "........searching.......");
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -20,10 +22,11 @@ const Search = ({ searchData, placeholder }) => {
     : searchData.filter((value) => {
         return value.name.toLowerCase().includes(search.toLowerCase());
       });
+  console.log(filtered, "........filtering.......");
 
   const showModal = async (up) => {
     setIsModalVisible(true);
-    const url = `https://jsonplaceholder.typicode.com/users/${up.id}`;
+    const url = `${baseURL}/users/${up.id}`;
     const res = await axios.get(url);
     const info_detail = await res.data;
     console.log(info_detail);
@@ -76,7 +79,7 @@ const Search = ({ searchData, placeholder }) => {
           onOk={handleOk}
           onCancel={handleCancel}
         >
-          {info ? <ModelDetail info={info} /> : null}
+          {info ? <ModelDetail info={info} /> : <Loading />}
         </Modal>
       </div>
     </div>

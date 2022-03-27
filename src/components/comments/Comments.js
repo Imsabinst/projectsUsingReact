@@ -1,21 +1,7 @@
 import { Table } from "antd";
-import React, { useEffect, useState } from "react";
+import Loading from "../loading/Loading";
 
-const Comments = () => {
-  const url = "https://jsonplaceholder.typicode.com/comments";
-  const [loading, setLoading] = useState(false);
-  const [info, setInfo] = useState([]);
-
-  useEffect(() => {
-    setLoading(true);
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => setInfo(data))
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(setLoading(false));
-  }, []);
+const Comments = ({ comment }) => {
   const columns = [
     { key: "1", title: "ID", dataIndex: "id" },
     { key: "2", title: "Post Id", dataIndex: "postId" },
@@ -24,7 +10,11 @@ const Comments = () => {
     { key: "5", title: "Comments", dataIndex: "body" },
   ];
 
-  return <Table loading={loading} dataSource={info} columns={columns} />;
+  return (
+    <div>
+      {comment ? <Table dataSource={comment} columns={columns} /> : <Loading />}
+    </div>
+  );
 };
 
 export default Comments;
