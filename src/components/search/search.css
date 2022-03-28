@@ -1,23 +1,52 @@
+.main {
+  background-color: rgb(236, 236, 236);
+  padding: 12px;
+}
 .user__list {
   display: grid;
-  gap: 50px 100px;
+  gap: 10px 30px;
   grid-template-columns: 30% 30% 30%;
-  padding: 10px;
+  margin-left: 12px;
+  margin-bottom: 12px;
 }
 .card {
-  width: 360px;
+  /* width: 360px;
   height: 140px;
   padding: 16px;
   background-color: rgba(119, 129, 134, 0.753);
-  text-align: center;
+  text-align: center; */
+
+  margin: 0 auto;
+  margin-top: 7%;
+  width: 270px;
+  height: 290px;
+  border-radius: 12px;
+
+  background-color: rgba(32, 111, 184, 0.733);
+  box-shadow: 4px 4px 2px rgb(9, 40, 44);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: rgb(27, 24, 24);
+  text-shadow: 0px 0px 1px rgb(173, 171, 171);
+  font-size: 24px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 .search__cotainer {
   margin-left: 20%;
 }
 .search {
   width: 60%;
+  margin-top: 12px;
+  border-radius: 12px;
+  background-color: rgba(242, 244, 247, 0.74);
+  box-shadow: 4px 4px 2px rgb(1, 20, 22);
+  text-align: start;
+  padding-left: 32px;
 }
 .btn__info {
-  width: 390px;
-  height: 32px;
+  margin: 12px;
+  background-color: rgb(4, 101, 247);
 }

@@ -1,7 +1,21 @@
 import { Table } from "antd";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Loading from "../loading/Loading";
+import { baseURL } from "../services/Constants";
 
-const Comments = ({ comment }) => {
+const Comments = () => {
+  const [comments, setComments] = useState("");
+
+  const getComments = async () => {
+    const comment_response = await axios.get(`${baseURL}/comments`);
+    const comment = await comment_response.data;
+    setComments(comment);
+  };
+  useEffect(() => {
+    getComments();
+  }, []);
+
   const columns = [
     { key: "1", title: "ID", dataIndex: "id" },
     { key: "2", title: "Post Id", dataIndex: "postId" },
@@ -12,7 +26,11 @@ const Comments = ({ comment }) => {
 
   return (
     <div>
-      {comment ? <Table dataSource={comment} columns={columns} /> : <Loading />}
+      {comments ? (
+        <Table dataSource={comments} columns={columns} />
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 };

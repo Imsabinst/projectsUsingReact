@@ -1,8 +1,23 @@
 import { Table } from "antd";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Loading from "../loading/Loading";
+import { baseURL } from "../services/Constants";
 
-const Detail = ({ info }) => {
-  console.log(info);
+const Detail = () => {
+  const [todo, setToDo] = useState("");
+
+  const getToDoList = async () => {
+    const list_response = await axios.get(`${baseURL}/todos`);
+    const list = await list_response.data;
+    setToDo(list);
+  };
+
+  console.log("******todo****", todo);
+  useEffect(() => {
+    getToDoList();
+  }, []);
+
   const columns = [
     { key: "1", title: "ID", dataIndex: "id" },
     { key: "2", title: "User Id", dataIndex: "userId" },
@@ -19,7 +34,7 @@ const Detail = ({ info }) => {
 
   return (
     <div>
-      {info ? <Table dataSource={info} columns={columns} /> : <Loading />}
+      {todo ? <Table dataSource={todo} columns={columns} /> : <Loading />}
     </div>
   );
 };

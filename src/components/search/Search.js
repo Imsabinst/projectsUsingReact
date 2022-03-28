@@ -12,14 +12,16 @@ const Search = ({ searchData, placeholder }) => {
   const [activeModalId, setActiveModalId] = useState("");
   const [search, setSearch] = useState("");
 
-  console.log(searchData, "........searching.......");
+  console.log(searchData, "........first----> search data.......");
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
+
   const filtered = !searchData
     ? searchData
     : searchData.filter((value) => {
+        console.log("----this is value----", value);
         return value.name.toLowerCase().includes(search.toLowerCase());
       });
   console.log(filtered, "........filtering.......");
@@ -29,7 +31,6 @@ const Search = ({ searchData, placeholder }) => {
     const url = `${baseURL}/users/${up.id}`;
     const res = await axios.get(url);
     const info_detail = await res.data;
-    console.log(info_detail);
     setInfo(info_detail);
     setActiveModalId(null);
   };
@@ -41,8 +42,9 @@ const Search = ({ searchData, placeholder }) => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+
   return (
-    <div>
+    <div className="main">
       <div className="search__cotainer">
         <input
           className="search"
@@ -61,6 +63,7 @@ const Search = ({ searchData, placeholder }) => {
               <p>{up.email}</p>
 
               <Button
+                className="btn__info"
                 loading={up.id == activeModalId}
                 type="primary"
                 onClick={() => {
